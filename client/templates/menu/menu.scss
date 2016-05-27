@@ -78,9 +78,14 @@
             display: none;
         }
 
-        .menu-bar{
+        .menu-bar, .user-account{
             padding: 0;
             position: fixed;
+        }
+
+        .user-account {
+            margin-top: 8em;
+            width: 15em;
         }
 
         nav {
