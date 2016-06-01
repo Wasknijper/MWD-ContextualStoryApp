@@ -1,0 +1,22 @@
+.story-tile {
+    box-sizing: border-box;
+    width: 45%;
+    display: inline-block;
+    border-left: #7D3232 0.2em solid;
+    margin-right: 2em;
+    margin-bottom: 1.5em;
+    padding: 0.5em 1em;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: #332C2C;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: darken(#F7EFD2, 10%);
+    }
+}
