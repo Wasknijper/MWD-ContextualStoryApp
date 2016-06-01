@@ -65,6 +65,14 @@
             background-color: #F7EFD2;
         }
     }
+
+    a {
+        color: #F7EFD2;
+    }
+
+    a:hover {
+        color: darken(#F7EFD2, 25%)
+    }
 }
 
 @media (min-width: 64.5em) {
