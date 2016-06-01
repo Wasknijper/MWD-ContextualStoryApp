@@ -13,8 +13,10 @@
                 {{#if currentUser}}
                     <li><a href="#" class="logout">Log uit</a></li>
                 {{/if}}
-                <li>Second item</li>
-                <li>last one</li>
+                {{#if currentUser.profile.isAdmin}}
+                    <li><a href="/new">Nieuw verhaal</a></li>
+                    <li><a href="/edit">Verhaal aanpassen</a></li>
+                {{/if}}
             </ul>
         </nav>
     </div>

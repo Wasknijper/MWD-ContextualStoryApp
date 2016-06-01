@@ -1,0 +1,11 @@
+<template name="editStory">
+    <div class="edit-story">
+        <h1>Pas een verhaal aan</h1>
+        <p>Kies een verhaal om aan te passen</p>
+        <ul>
+            {{#each stories}}
+                {{>storyTile}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
