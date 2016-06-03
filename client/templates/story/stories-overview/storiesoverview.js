@@ -17,6 +17,10 @@ Template.storyOverview.helpers({
         if(this.text === 'name'){
             var name = Meteor.user().profile.name;
             return name;
+        } else if(this.text === 'namefirstletter'){
+            var name = Meteor.user().profile.name;
+            name = name[0] + ".";
+            return name;
         } else if(this.text === 'day'){
             // var date = Chronos.currentTime();
             var day = date.getDay();

@@ -22,7 +22,12 @@ Template.editStoryDetail.events({
                 Session.set('editStory', 'Je verhaal is opgeslagen');
             }
         })
-        console.log(story);
+    },
+
+    'click .buttons button' : function(e){
+        var id = e.currentTarget.id;
+        var textarea = $("textarea[name=story")[0];
+        textarea.value = textarea.value + '{' + id + '}';
     }
 });
 
@@ -31,13 +36,12 @@ Template.editStoryDetail.helpers({
     storyText : function(){
         var storyData = Template.currentData();
         var textArray = storyData.text;
-        console.log(textArray);
+
         var formattedText = '';
         for (var i = 0, len = textArray.length; i < len; i++) {
             if(textArray[i].type === 'variable'){
                 var curlyBracketOpen = ' {', curlyBracketClosed = '} ';
                 var newValue = curlyBracketOpen + textArray[i].text + curlyBracketClosed;
-                console.log(newValue);
                 formattedText =  formattedText + newValue;
             } else {
                 formattedText = formattedText + textArray[i].text;
