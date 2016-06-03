@@ -27,6 +27,12 @@ Template.newStory.events({
                 textarea.value = '';
             }
         })
+    },
+
+    'click .buttons button' : function(e){
+        var id = e.currentTarget.id;
+        var textarea = $("textarea[name=story")[0];
+        textarea.value = textarea.value + '{' + id + '}';
     }
 });
 
