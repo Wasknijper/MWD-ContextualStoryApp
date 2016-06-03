@@ -6,13 +6,15 @@ Template.newStory.events({
     'click #submit-button' : function(e){
         var title = $("input[name=title")[0];
         var textarea = $("textarea[name=story")[0];
-        var storyText = textarea.value
+        var text = formatStoryText(textarea.value);
+
+        console.log(text);
 
         var story = {
             createdBy : Meteor.userId(),
             createdOn : new Date(),
             title: title.value,
-            text: {storyText}
+            text: text
         };
 
         Meteor.call('addStory', story, function(err, res){
