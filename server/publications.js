@@ -9,3 +9,7 @@ Meteor.publish('storiesByUser', function(userId){
 Meteor.publish('findUserById', function(userId){
   return Meteor.users.find({_id: userId});
 });
+
+Meteor.publish('lastWeather', function(){
+  return Weather.find({}, {sort: {createdOn: -1}});
+});
