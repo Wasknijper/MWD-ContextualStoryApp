@@ -8,5 +8,13 @@ Template.login.events({
         Meteor.loginWithPassword({email: emailVar}, passwordVar, function(err){
             if( err ) $('div#error').html( err.message );
         });
+    },
+
+    'click #facebook-login': function(event) {
+        Meteor.loginWithFacebook({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
     }
 });

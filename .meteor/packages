@@ -22,3 +22,6 @@ fourseven:scss
 iron:router
 session
 remcoder:chronos
+http
+service-configuration
+accounts-facebook
