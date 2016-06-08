@@ -2,6 +2,10 @@ Meteor.publish('storyById', function(storyId){
   return Story.find({_id: storyId});
 });
 
+Meteor.publish('allStories', function(userId){
+  return Story.find({});
+});
+
 Meteor.publish('storiesByUser', function(userId){
   return Story.find({createdBy: userId});
 });
