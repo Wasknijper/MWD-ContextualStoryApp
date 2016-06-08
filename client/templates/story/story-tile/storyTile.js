@@ -6,12 +6,25 @@ Template.storyTile.onRendered(function () {
 Template.storyTile.helpers({
     username : function(){
         var createdBy = Template.currentData().createdBy;
-        var user = Meteor.users.findOne({'_id' : createdBy});
-        return user.profile.name;
+        var writer = Meteor.users.findOne({'_id' : createdBy});
+        if(writer){
+           return writer.profile.name;
+        } else {
+            return '';
+        }
     },
 
     createdOnFormatted: function(){
         var createdOn = Template.currentData().createdOn;
         return createdOn.getDate() + ' - ' + (createdOn.getMonth()+1) + ' - ' + createdOn.getFullYear();
+    },
+
+    url: function(){
+        var parentTemplateName = Template.instance().view.parentView.parentView.parentView.name;
+        if(parentTemplateName === 'Template.editStory') {
+            return '/edit/' + Template.currentData()._id;
+        } else {
+            return '/story/' + Template.currentData()._id;
+        }
     }
 });

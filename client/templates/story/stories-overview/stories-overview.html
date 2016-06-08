@@ -1,0 +1,10 @@
+<template name="storiesOverview">
+    <div class="storiesOverview">
+        <h1>Verhalen</h1>
+        <ul>
+            {{#each stories}}
+                {{>storyTile}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
