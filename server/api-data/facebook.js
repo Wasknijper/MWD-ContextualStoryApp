@@ -4,7 +4,7 @@ Accounts.onLogin(function(obj){
     var user = obj.user;
 
     if (user && user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
-        var result = HTTP.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=birthday, gender, location, education, hometown, likes, books, music, relationship_status, significant_other, work', function(err, res){
+        var result = HTTP.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=birthday, gender, location, education, hometown, likes, music, relationship_status, significant_other, work', function(err, res){
             var data = res.data;
             var document = FacebookData.findOne({userId: user._id});
             document ? FacebookData.update({_id: document._id}, {$set: {userId : user._id, data: data}}) : FacebookData.insert({userId : user._id, data: data}, getLikes(user, res.data.likes.paging.next));

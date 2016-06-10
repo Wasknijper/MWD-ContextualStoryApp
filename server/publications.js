@@ -17,3 +17,7 @@ Meteor.publish('findUserById', function(userId){
 Meteor.publish('lastWeather', function(){
   return Weather.find({}, {sort: {createdOn: -1}});
 });
+
+Meteor.publish('facebookDataCurrentUser', function(id){
+  return FacebookData.find({userId: id});
+});
