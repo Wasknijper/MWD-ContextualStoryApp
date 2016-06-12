@@ -11,7 +11,7 @@ Template.login.events({
     },
 
     'click #facebook-login': function(event) {
-        Meteor.loginWithFacebook({}, function(err){
+        Meteor.loginWithFacebook({requestPermissions: ['public_profile', 'user_actions.books', 'user_actions.music', 'user_birthday', 'user_education_history', 'user_hometown', 'user_likes', 'user_location', 'user_work_history']}, function(err){
             if (err) {
                 throw new Meteor.Error("Facebook login failed");
             }
