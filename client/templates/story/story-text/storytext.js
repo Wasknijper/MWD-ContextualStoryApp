@@ -5,9 +5,6 @@ Template.storyText.onCreated(function() {
     Meteor.subscribe("facebookDataCurrentUser", Meteor.userId());
     if(navigator.geolocation) {
         var onSuccess = function(position) {
-            console.log(position.coords.latitude)
-            console.log(position.coords.longitude)
-
             var geo = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + " ," + position.coords.longitude + "&key=AIzaSyDyViN5tiPa3bD0qtBjZj8ejkFyp8UOXNY";
 
             $.getJSON(geo).done(function(res) {
