@@ -2,6 +2,13 @@ Template.editStoryDetail.onCreated(function editStoryDetailOnCreated() {
     Session.set('editStory', '');
 });
 
+
+Template.editStoryDetail.onRendered(function editStoryDetailOnRendered() {
+    $(".toggle").addClass(function() {
+      return "hidden";
+    });
+});
+
 Template.editStoryDetail.events({
     'click #edit-button' : function(e){
         var title = $("input[name=title")[0];
@@ -24,10 +31,19 @@ Template.editStoryDetail.events({
         })
     },
 
-    'click .buttons button' : function(e){
+    'click button' : function(e){
         var id = e.currentTarget.id;
         var textarea = $("textarea[name=story")[0];
         textarea.value = textarea.value + '{' + id + '}';
+    },
+
+    'click .variableToggle a' : function(e){
+        e.preventDefault();
+        var target = e.currentTarget.hash.substr(1);
+        $(".toggle").addClass(function() {
+            return "hidden";
+        });
+        $("." + target).removeClass('hidden');
     }
 });
 

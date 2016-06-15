@@ -1,30 +1,50 @@
 <template name="newStory">
-    <div class="new-story">
+    <div class="edit-story">
         <h1>Maak nieuw verhaal</h1>
         <p>{{submitMessage}}</p>
         <h2>Titel</h2>
         <input name="title"/>
-        <h2>Verhaal</h2>
-        <div class="buttons">
-            <span>Variablen: </span>
+        <h2>Variabelen</h2>
+        <div class="variableToggle">
+            <a href="#name">Naam</a>
+            <a href="#time"> Tijd </a>
+            <a href="#weather"> Weer</a>
+            <a href="#location"> Locatie </a>
+            <a href="#userinfo"> Gebruiker </a>
+        </div>
+        <div class="name toggle">
+            <h3> Naam</h3>
             <button id="name"> Naam </button>
             <button id="namefirstletter"> Naam - eerste letter </button>
+        </div>
+        <div class="time toggle">
+            <h3> Tijd</h3>
             <button id="time"> Tijd in woorden </button>
             <button id="day"> Dag </button>
             <button id="month"> Maand </button>
             <button id="seconds"> Seconden </button>
             <button id="dayandtime"> Dag en tijd aan elkaar </button>
+        </div>
+        <div class="weather toggle">
+            <h3> Weer</h3>
             <button id="weather"> Weer </button>
             <button id="weatherdescriptive"> Weer - beschrijvend </button>
+        </div>
+        <div class="location toggle">
+            <h3> Locatie</h3>
+            <button id="city"> Stad </button>
+            <button id="country"> Land </button>
+            <button id="street"> Straat </button>
+        </div>
+        <div class="userinfo toggle">
+            <h3> Gebruikers informatie</h3>
             <button id="music"> Muziek </button>
             <button id="education"> Opleiding </button>
             <button id="school"> Naam van school </button>
             <button id="hometown"> Thuisstad </button>
             <button id="work"> Werk </button>
-            <button id="city"> Stad </button>
-            <button id="county"> Land </button>
-            <button id="street"> Straat </button>
         </div>
+        <h2>Text</h2>
         <textarea name="story"></textarea>
         <button id="submit-button">Submit story</button>
     </div>
