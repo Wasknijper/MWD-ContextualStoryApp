@@ -1,6 +1,26 @@
+var location = undefined;
+
 Template.storyText.onCreated(function() {
     Meteor.subscribe("lastWeather");
     Meteor.subscribe("facebookDataCurrentUser", Meteor.userId());
+    if(navigator.geolocation) {
+        var onSuccess = function(position) {
+            console.log(position.coords.latitude)
+            console.log(position.coords.longitude)
+
+            var geo = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + " ," + position.coords.longitude + "&key=AIzaSyDyViN5tiPa3bD0qtBjZj8ejkFyp8UOXNY";
+
+            $.getJSON(geo).done(function(res) {
+                location = new ReactiveVar(res.results[0].address_components);
+            });
+        }
+
+        var onError = function(err){
+            console.log(err);
+        }
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
 });
 
 Template.storyText.helpers({
@@ -62,6 +82,15 @@ Template.storyText.helpers({
             if(!facebook){return;}
             var index = facebook.data.work.length - 1;
             return facebook.data.work[index].employer.name;
+        } else if (this.text === "city") {
+            if(!location){return;}
+            return location.curValue[3].long_name;
+        } else if (this.text === "street") {
+            if(!location){return;}
+            return location.curValue[1].long_name;
+        } else if (this.text === "country") {
+            if(!location){return;}
+            return location.curValue[6].long_name;
         } else {
             return;
         }
