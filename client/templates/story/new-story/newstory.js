@@ -2,6 +2,12 @@ Template.newStory.onCreated(function newStoryOnCreated() {
     Session.set('submitStory', '');
 });
 
+Template.newStory.onRendered(function newStoryOnRendered() {
+    $(".toggle").addClass(function() {
+      return "hidden";
+    });
+});
+
 Template.newStory.events({
     'click #submit-button' : function(e){
         var title = $("input[name=title")[0];
@@ -29,10 +35,19 @@ Template.newStory.events({
         })
     },
 
-    'click .buttons button' : function(e){
+    'click button' : function(e){
         var id = e.currentTarget.id;
         var textarea = $("textarea[name=story")[0];
         textarea.value = textarea.value + '{' + id + '}';
+    },
+
+    'click .variableToggle a' : function(e){
+        e.preventDefault();
+        var target = e.currentTarget.hash.substr(1);
+        $(".toggle").addClass(function() {
+            return "hidden";
+        });
+        $("." + target).removeClass('hidden');
     }
 });
 
