@@ -17,13 +17,14 @@ Accounts.onLogin(function(obj){
 
 
 var getLikes = function(user, url){
+    if(!url){return}
     HTTP.get(url, function(err, res){
         var likesData = res.data;
         FacebookData.update({userId: user._id}, {$push: {'data.likes.data' : {$each: likesData.data}}});
         FacebookData.update({userId: user._id}, {$set: {'data.likes.paging' : likesData.paging}});
         console.log(likesData.paging.next)
-        if(likesData.paging.next){
+        //if(likesData.paging.next){
             getLikes(user, likesData.paging.next);
-        }
+        //}
     });
 }
