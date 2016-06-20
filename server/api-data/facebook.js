@@ -1,5 +1,3 @@
-
-
 Accounts.onLogin(function(obj){
     var user = obj.user;
 
@@ -17,12 +15,14 @@ Accounts.onLogin(function(obj){
 
 
 var getLikes = function(user, url){
-    HTTP.get(url, function(err, res){
-        var likesData = res.data;
-        FacebookData.update({userId: user._id}, {$push: {'data.likes.data' : {$each: likesData.data}}});
-        FacebookData.update({userId: user._id}, {$set: {'data.likes.paging' : likesData.paging}});
-        if(likesData.paging.next){
+    if(url){
+        HTTP.get(url, function(err, res){
+            var likesData = res.data;
+            FacebookData.update({userId: user._id}, {$push: {'data.likes.data' : {$each: likesData.data}}});
+            FacebookData.update({userId: user._id}, {$set: {'data.likes.paging' : likesData.paging}});
             getLikes(user, likesData.paging.next);
-        }
-    });
+        });
+    } else {
+        
+    }
 }

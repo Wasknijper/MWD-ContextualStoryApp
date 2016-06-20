@@ -13,11 +13,13 @@ Template.editStoryDetail.events({
     'click #edit-button' : function(e){
         var title = $("input[name=title")[0];
         var textarea = $("textarea[name=story")[0];
+        var textareaDescription = $("textarea[name=description")[0];
         var storyText = formatStoryText(textarea.value);
         var storyId = Template.currentData()._id;
 
         var story = {
             title: title.value,
+            description: textareaDescription.value,
             text: storyText
         };
 
@@ -33,6 +35,7 @@ Template.editStoryDetail.events({
 
     'click button' : function(e){
         var id = e.currentTarget.id;
+        if(id === 'edit-button'){ return };
         var textarea = $("textarea[name=story")[0];
         textarea.value = textarea.value + '{' + id + '}';
     },

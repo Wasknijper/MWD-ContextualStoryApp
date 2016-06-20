@@ -7,8 +7,13 @@
     margin-bottom: 1.5em;
     padding: 0.5em 1em;
 
-    p {
-        margin-bottom: 0;
+    p, h3 {
+        margin: 0;
+    }
+
+    .description {
+        margin-bottom: 1em;
+        font-size: 0.9em;
     }
 
     a {

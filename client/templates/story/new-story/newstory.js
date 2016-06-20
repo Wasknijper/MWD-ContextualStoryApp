@@ -12,6 +12,7 @@ Template.newStory.events({
     'click #submit-button' : function(e){
         var title = $("input[name=title")[0];
         var textarea = $("textarea[name=story")[0];
+        var textareaDescription = $("textarea[name=description")[0];
         var text = formatStoryText(textarea.value);
 
         console.log(text);
@@ -20,6 +21,7 @@ Template.newStory.events({
             createdBy : Meteor.userId(),
             createdOn : new Date(),
             title: title.value,
+            description: textareaDescription.value,
             text: text
         };
 
@@ -30,6 +32,7 @@ Template.newStory.events({
             } else {
                 Session.set('submitStory', 'Je verhaal is opgeslagen');
                 title.value = '';
+                textareaDescription.value = '';
                 textarea.value = '';
             }
         })
