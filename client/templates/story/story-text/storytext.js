@@ -1,8 +1,15 @@
 var location = undefined;
+var timeout = null;
+
 
 Template.storyText.onCreated(function() {
     Meteor.subscribe("lastWeather");
-    Meteor.subscribe("facebookDataCurrentUser", Meteor.userId());
+    if(Session.get('readingAs')){
+        var session = Session.get('readingAs');
+        Meteor.subscribe("facebookDataCurrentUser", session.id);
+    } else {
+        Meteor.subscribe("facebookDataCurrentUser", Meteor.userId());
+    }
     if(navigator.geolocation) {
         var onSuccess = function(position) {
             var geo = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + " ," + position.coords.longitude + "&key=AIzaSyDyViN5tiPa3bD0qtBjZj8ejkFyp8UOXNY";
@@ -20,18 +27,49 @@ Template.storyText.onCreated(function() {
     }
 });
 
+Template.storyText.onRendered(function() {
+    $(document).on('mousemove', function(event) {
+        clearTimeout(timeout);
+
+        $('.menu').removeClass('hidden');
+
+        timeout = setTimeout(function() {
+            $('.menu').addClass('hidden');
+        }, 3000);
+    });
+})
+
+Template.storyText.onDestroyed(function(){
+    clearTimeout(timeout);
+    $(document).off('mousemove');
+})
+
 Template.storyText.helpers({
     story: () => Template.currentData(),
 
     variable: function() {
         var date = Chronos.currentTime();
         var weather = Weather.findOne({}, {sort: {createdOn: -1}});
-        var facebook = FacebookData.findOne({userId: Meteor.userId()});
+        var userId;
+        if(Session.get('readingAs')){
+            userId = Session.get('readingAs').id;
+        } else {
+            userId = Meteor.userId();
+        }
+        var facebook = FacebookData.findOne({'userId': userId});
         if(this.text === 'name'){
-            var name = Meteor.user().profile.name;
-            return name;
+            if(Session.get('readingAs')){
+                return name = Session.get('readingAs').name;
+            } else {
+                return name = Meteor.user().profile.name;
+            }
         } else if(this.text === 'namefirstletter'){
-            var name = Meteor.user().profile.name;
+            var name;
+            if(Session.get('readingAs')){
+                name = Session.get('readingAs').name;
+            } else {
+                name = Meteor.user().profile.name;
+            }
             name = name[0] + ".";
             return name;
         } else if(this.text === 'day'){

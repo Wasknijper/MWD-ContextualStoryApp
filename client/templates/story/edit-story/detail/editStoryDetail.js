@@ -10,6 +10,14 @@ Template.editStoryDetail.onRendered(function editStoryDetailOnRendered() {
 });
 
 Template.editStoryDetail.events({
+    'click #delete-button' : function(e){
+        var confirmAlert = confirm('Weet je zeker dat je dit verhaal wilt verwijderen?');
+        if(confirmAlert){
+            Meteor.call('deleteStory', Template.currentData()._id);
+            Router.go('/edit');
+        }
+    },
+
     'click #edit-button' : function(e){
         var title = $("input[name=title")[0];
         var textarea = $("textarea[name=story")[0];
@@ -33,20 +41,22 @@ Template.editStoryDetail.events({
         })
     },
 
-    'click button' : function(e){
+    'click .toggle button' : function(e){
         var id = e.currentTarget.id;
         if(id === 'edit-button'){ return };
         var textarea = $("textarea[name=story")[0];
         textarea.value = textarea.value + '{' + id + '}';
     },
 
-    'click .variableToggle a' : function(e){
+    'click .variableToggle button' : function(e){
         e.preventDefault();
-        var target = e.currentTarget.hash.substr(1);
+        var target = e.currentTarget.name;
         $(".toggle").addClass(function() {
             return "hidden";
         });
         $("." + target).removeClass('hidden');
+        $('.variableToggle button').removeClass('active');
+        $(e.currentTarget).addClass('active');
     }
 });
 

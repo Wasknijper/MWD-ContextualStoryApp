@@ -23,6 +23,47 @@ var getLikes = function(user, url){
             getLikes(user, likesData.paging.next);
         });
     } else {
-        
+        applyMagicSauce(user._id);
     }
+};
+
+var applyMagicSauce = function(userId){
+    var data = FacebookData.findOne({'userId': userId}).data.likes.data;
+    var likeIds = data.map(function(obj){
+        return obj.id
+    });
+    HTTP.post('http://api-v2.applymagicsauce.com/auth', {
+        data: {
+            "customer_id": 2439,
+            "api_key": "4qoso5tjvkutnq1kr93pcil24"
+        }
+    }, function(err, res){
+        var token = res.data.token;
+        HTTP.post('http://api-v2.applymagicsauce.com/like_ids', {
+            headers: {
+                'X-Auth-Token': token,
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            data: likeIds
+        }, function(err, res){
+            var data = res.data.predictions;
+            //http://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+            data.sort(function(a, b){
+                if (a.trait < b.trait){
+                    return -1;
+                } else if (a.trait > b.trait){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            var formattedData = {};
+            for(var i = 0; i < data.length; i++){
+                var key = data[i].trait;
+                formattedData[key] = data[i].value;
+            }
+            FacebookData.update({'userId': userId}, {$set: {'applymagicsauce': formattedData}});
+        })
+    });
 }

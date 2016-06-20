@@ -1,6 +1,6 @@
 .menu {
-    color: #F7EFD2;
-    background-color: #332C2C;
+    color: #08293B;
+    background-color: #E9E9E9;
     margin-right: 0;
     -ms-flex: 0 30em;
     -webkit-box-flex:  0;
@@ -9,6 +9,11 @@
     box-flex:  0;
     width: 100%;
     position: fixed;
+    transition: 0.5s;
+
+    &.hidden {
+        opacity: 0;
+    }
 
     .menu-bar {
         padding: 1em;
@@ -22,7 +27,7 @@
         display: block;
         transition: max-height 0.5s;
         position: absolute;
-        background-color: #332C2C;
+        background-color: #E9E9E9;
         overflow: hidden;
         padding: 0 1em;
         margin-bottom: 1em;
@@ -50,9 +55,9 @@
 
     button {
         margin-right: 0.5em;
-        color: #F7EFD2;
+        color: #08293B;
         line-height: 1.5em;
-        border: 1px solid #F7EFD2;
+        border: 1px solid #08293B;
         background: none;
         display: inline;
         padding: 0 0.5em;
@@ -61,17 +66,17 @@
         vertical-align: text-bottom;
 
         &:hover, &:focus {
-            color: #332C2C;
-            background-color: #F7EFD2;
+            color: #E9E9E9;
+            background-color: #08293B;
         }
     }
 
     a {
-        color: #F7EFD2;
+        color: #08293B;
     }
 
     a:hover {
-        color: darken(#F7EFD2, 25%)
+        color: lighten(#08293B, 25%)
     }
 }
 

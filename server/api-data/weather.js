@@ -16,7 +16,6 @@ var resultWeather = () => HTTP.get(url, function(err, res){
 
 var descibeWeather = function(id){
     var description;
-    console.log(id);
     switch(id){
         case 200:
         case 201:

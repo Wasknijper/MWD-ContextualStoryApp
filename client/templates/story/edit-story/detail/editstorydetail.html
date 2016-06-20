@@ -1,16 +1,17 @@
 <template name="editStoryDetail">
     <div class="edit-story">
         <h1>{{title}} aanpassen</h1>
+        <button id="delete-button">Verhaal verwijderen</button>
         <p>{{editMessage}}</p>
         <h2>Titel</h2>
         <input name="title" value="{{title}}"/>
         <h2>Variabelen</h2>
         <div class="variableToggle">
-            <a href="#name">Naam</a>
-            <a href="#time"> Tijd </a>
-            <a href="#weather"> Weer</a>
-            <a href="#location"> Locatie </a>
-            <a href="#userinfo"> Gebruiker </a>
+            <button name="name">Naam</button>
+            <button name="time"> Tijd </button>
+            <button name="weather"> Weer</button>
+            <button name="location"> Locatie </button>
+            <button name="userinfo"> Gebruiker </button>
         </div>
         <div class="name toggle">
             <h3> Naam</h3>

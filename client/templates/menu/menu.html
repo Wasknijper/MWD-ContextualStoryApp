@@ -5,9 +5,13 @@
             <h2><a href="/">Contextual Story App</a></h2>
         </div>
         <nav class="hidden">
-            <h3>Navigation</h3>
             {{#if currentUser}}
-                <p>Welcome, {{currentUser.profile.name}}</p>
+                <p>
+                    Welcome, {{currentUser.profile.name}}<br>
+                    {{#if impersonating}}
+                        Leest als: {{impersonating}} <a href="#" id='clear'>(clear)</a>
+                    {{/if}}
+                </p>
             {{/if}}
             <ul>
                 {{#if currentUser}}
@@ -16,6 +20,7 @@
                 {{#if currentUser.profile.isAdmin}}
                     <li><a href="/new">Nieuw verhaal</a></li>
                     <li><a href="/edit">Verhaal aanpassen</a></li>
+                    <li><a href="/userlist">Gebruikers lijst</a></li>
                 {{/if}}
             </ul>
         </nav>

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     width: 45%;
     display: inline-block;
-    border-left: #7D3232 0.2em solid;
+    border-left: #CBE0EC 0.2em solid;
     margin-right: 2em;
     margin-bottom: 1.5em;
     padding: 0.5em 1em;
@@ -13,7 +13,8 @@
 
     .description {
         margin-bottom: 1em;
-        font-size: 0.9em;
+        font-size: 0.8em;
+        font-style: italic;
     }
 
     a {
@@ -22,6 +23,6 @@
     }
 
     &:hover {
-        background-color: darken(#F7EFD2, 10%);
+        background-color: #CBE0EC;
     }
 }

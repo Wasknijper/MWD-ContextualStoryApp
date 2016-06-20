@@ -1,0 +1,19 @@
+<template name="userList">
+    <div class="user-list">
+        <h1>Gebruikers</h1>
+        <table>
+            <tr>
+                <th>Naam</th>
+                <th>Id</th>
+                <th></th>
+            </tr>
+            {{#each users}}
+                <tr>
+                    <td>{{profile.name}}</td>
+                    <td>{{_id}}</td>
+                    <td> <button name="{{profile.name}}" id="{{_id}}"> Test verhalen als {{profile.name}} </button></td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</template>

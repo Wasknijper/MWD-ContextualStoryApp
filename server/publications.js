@@ -14,6 +14,13 @@ Meteor.publish('findUserById', function(userId){
   return Meteor.users.find({_id: userId});
 });
 
+Meteor.publish('allUsers', function(user){
+    if (user.emails[0].address === "admin@email.nl") {
+        return Meteor.users.find({});
+    }
+    return ;
+});
+
 Meteor.publish('lastWeather', function(){
   return Weather.find({}, {sort: {createdOn: -1}});
 });
