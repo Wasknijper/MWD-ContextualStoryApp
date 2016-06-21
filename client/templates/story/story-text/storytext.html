@@ -1,17 +1,19 @@
 <template name="storyText">
-    <h1>
-        {{story.title}}
-    </h1>
+    <div class="story-text">
+        <h1>
+            {{story.title}}
+        </h1>
 
-    <p>
-        {{#each story.text}}
-            {{#if equals this.type 'text'}}
-                <span>{{breaklines this.text}}</span>
-            {{else}}
-                {{#if equals this.type 'variable'}}
-                    <span>{{variable}}</span>
+        <p>
+            {{#each story.text}}
+                {{#if equals this.type 'text'}}
+                    {{breaklines this.text}}
+                {{else}}
+                    {{#if equals this.type 'variable'}}
+                        <span>{{variable}}</span>
+                    {{/if}}
                 {{/if}}
-            {{/if}}
-        {{/each}}
-    </p>
+            {{/each}}
+        </p>
+    </div>
 </template>
