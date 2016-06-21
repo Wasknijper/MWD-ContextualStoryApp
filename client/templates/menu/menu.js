@@ -2,6 +2,8 @@ Template.menu.onRendered(function(){
 });
 
 Template.menu.helpers({
+    isAdmin: () => Roles.userIsInRole(Meteor.userId(), 'admin', 'admins'),
+
     impersonating: function(){
         if(Session.get('readingAs')) {
             var readingAs = Session.get('readingAs');

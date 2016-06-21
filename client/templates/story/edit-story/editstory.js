@@ -1,7 +1,7 @@
 Template.editStory.onRendered(function () {
-    Meteor.subscribe('storiesByUser', Meteor.userId());
+    Meteor.subscribe('allStories');
 });
 
 Template.editStory.helpers({
-    stories: () => Story.find({'createdBy': Meteor.userId()})
+    stories: () => Story.find({})
 });

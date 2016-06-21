@@ -69,13 +69,14 @@ Template.editStoryDetail.helpers({
         var formattedText = '';
         for (var i = 0, len = textArray.length; i < len; i++) {
             if(textArray[i].type === 'variable'){
-                var curlyBracketOpen = ' {', curlyBracketClosed = '} ';
+                var curlyBracketOpen = '{', curlyBracketClosed = '}';
                 var newValue = curlyBracketOpen + textArray[i].text + curlyBracketClosed;
                 formattedText =  formattedText + newValue;
             } else {
                 formattedText = formattedText + textArray[i].text;
             }
         }
+        formattedText = formattedText.split("&nbsp;").join(" ");
         return formattedText;
     }
 })

@@ -5,11 +5,5 @@ Template.storiesOverview.onRendered(function () {
 Template.storiesOverview.helpers({
     stories: () => Story.find({}),
     user: () => Meteor.user(),
-    isAdmin: function() {
-        if(Meteor.user().emails[0].address === "admin@email.nl") {
-            return true
-        } else {
-            return false
-        }
-    }
+    isAdmin: () => Roles.userIsInRole(Meteor.userId(), 'admin', 'admins')
 });

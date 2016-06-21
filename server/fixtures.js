@@ -1,13 +1,21 @@
 Meteor.startup(function(){
     if ( Meteor.users.find().count() === 0 ) {
-        Accounts.createUser({
+        var admin = Accounts.createUser({
             email: 'admin@email.nl',
             password: 'admin',
             profile: {
                 name: 'Admin',
-                isAdmin: true
             }
         });
+
+        console.log(admin);
+        Roles.addUsersToRoles(admin, 'admin', 'admins');
+    } else {
+        var admin = Accounts.findUserByEmail('admin@email.nl');
+
+        if(!Roles.userIsInRole(admin._id, 'admin', 'admins')){
+            Roles.addUsersToRoles(admin, 'admin', 'admins');
+        }
     }
 
     if(Fallback.find().count() === 0) {
