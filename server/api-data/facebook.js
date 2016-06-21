@@ -64,6 +64,6 @@ var applyMagicSauce = function(userId){
                 formattedData[key] = data[i].value;
             }
             FacebookData.update({'userId': userId}, {$set: {'applymagicsauce': formattedData}});
-        })
+        });
     });
 }

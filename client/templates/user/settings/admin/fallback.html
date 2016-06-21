@@ -1,0 +1,77 @@
+<template name="fallbackSettings">
+    <div class="fallbacks">
+        <h1>Terugvallen</h1>
+        <p> Stel de terugvallen in voor als een variabele niet kan worden gevonden. </p>
+        <table>
+            <tr>
+                <th>Variabele</th>
+                <th>Terugval</th>
+            </tr>
+            <tr>
+                <td>Naam</td>
+                <td><input class="fallback-input" value="{{values.name}}" name="name"/></td>
+            </tr>
+            <tr>
+                <td>Dag</td>
+                <td><input class="fallback-input" value="{{values.day}}" name="day"/></td>
+            </tr>
+            <tr>
+                <td>Maand</td>
+                <td><input class="fallback-input" value="{{values.month}}" name="month"/></td>
+            </tr>
+            <tr>
+                <td>Seconden</td>
+                <td><input class="fallback-input" value="{{values.seconds}}" name="seconds"/></td>
+            </tr>
+            <tr>
+                <td>Tijd</td>
+                <td><input class="fallback-input" value="{{values.time}}" name="time"/></td>
+            </tr>
+            <tr>
+                <td>Dag en tijd </td>
+                <td><input class="fallback-input" value="{{values.daytime}}" name="dayandtime"/></td>
+            </tr>
+            <tr>
+                <td>Weer</td>
+                <td><input class="fallback-input" value="{{values.weather}}" name="weather"/></td>
+            </tr>
+            <tr>
+                <td>Weer beschrijvendevorm</td>
+                <td><input class="fallback-input" value="{{values.weatherdescriptive}}" name="weatherdescriptive"/></td>
+            </tr>
+            <tr>
+                <td>Muziek</td>
+                <td><input class="fallback-input" value="{{values.music}}" name="music"/></td>
+            </tr>
+            <tr>
+                <td>Opleiding</td>
+                <td><input class="fallback-input" value="{{values.education}}" name="education"/></td>
+            </tr>
+            <tr>
+                <td>School</td>
+                <td><input class="fallback-input" value="{{values.school}}" name="school"/></td>
+            </tr>
+            <tr>
+                <td>Geboortestad</td>
+                <td><input class="fallback-input" value="{{values.hometown}}" name="hometown"/></td>
+            </tr>
+            <tr>
+                <td>Werk</td>
+                <td><input class="fallback-input" value="{{values.work}}" name="work"/></td>
+            </tr>
+            <tr>
+                <td>Stad</td>
+                <td><input class="fallback-input" value="{{values.city}}" name="city"/></td>
+            </tr>
+            <tr>
+                <td>Straat</td>
+                <td><input class="fallback-input" value="{{values.street}}" name="street"/></td>
+            </tr>
+            <tr>
+                <td>Land</td>
+                <td><input class="fallback-input" value="{{values.county}}" name="country"/></td>
+            </tr>
+        </table>
+        <input type="submit" id="submit" value="Fallbacks opslaan"/>
+    </div>
+</template>

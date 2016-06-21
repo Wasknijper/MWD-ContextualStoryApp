@@ -1,0 +1,19 @@
+.fallbacks {
+    table {
+        width: 100%;
+        border-collapse:collapse;
+    }
+
+    tr {
+        text-align: left;
+        border-top: 1px solid;
+
+        &:first-of-type {
+            border: 0;
+        }
+    }
+
+    td {
+        padding: 0.4em 0;
+    }
+}

@@ -1,29 +1,30 @@
 <template name="menu">
+    {{#if currentUser.profile.isAdmin}}
     <div class="menu">
         <div class="menu-bar">
             <button id="menu-button">Menu</button>
             <h2><a href="/">Contextual Story App</a></h2>
         </div>
         <nav class="hidden">
-            {{#if currentUser}}
-                <p>
-                    Welcome, {{currentUser.profile.name}}<br>
-                    {{#if impersonating}}
-                        Leest als: {{impersonating}} <a href="#" id='clear'>(clear)</a>
-                    {{/if}}
-                </p>
-            {{/if}}
-            <ul>
-                {{#if currentUser}}
-                    <li><a href="#" class="logout">Log uit</a></li>
+            <p>
+                Welcome, {{currentUser.profile.name}}<br>
+                {{#if impersonating}}
+                    Leest als: {{impersonating}} <a href="#" id='clear'>(clear)</a>
                 {{/if}}
-                {{#if currentUser.profile.isAdmin}}
+            </p>
+            <ul>
+                    <li><a href="#" class="logout">Log uit</a></li>
                     <li><a href="/new">Nieuw verhaal</a></li>
                     <li><a href="/edit">Verhaal aanpassen</a></li>
                     <li><a href="/userlist">Gebruikers lijst</a></li>
-                {{/if}}
+                    <li><a href="/fallbacks">Variabelen terugvallen</a></li>
             </ul>
         </nav>
     </div>
+    {{else}}
+        {{#if currentUser}}
+        <a href="#" class="logout non-admin">Log uit</a>
+        {{/if}}
+    {{/if}}
 </template>
 

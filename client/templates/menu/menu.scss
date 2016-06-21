@@ -80,6 +80,11 @@
     }
 }
 
+.logout.non-admin {
+    padding: 1em 1em;
+    font-size: 0.8em;
+}
+
 @media (min-width: 64.5em) {
     .menu{
         position: relative;

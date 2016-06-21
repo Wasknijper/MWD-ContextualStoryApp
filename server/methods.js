@@ -7,5 +7,8 @@ Meteor.methods({
     },
     deleteStory: function(storyId){
         Story.remove({'_id' : storyId});
+    },
+    updateFallbacks: function(id, fallbacks){
+        Fallback.update({_id: id}, {$set: fallbacks});
     }
 });

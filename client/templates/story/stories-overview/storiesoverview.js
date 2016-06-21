@@ -3,5 +3,13 @@ Template.storiesOverview.onRendered(function () {
 });
 
 Template.storiesOverview.helpers({
-    stories: () => Story.find({})
+    stories: () => Story.find({}),
+    user: () => Meteor.user(),
+    isAdmin: function() {
+        if(Meteor.user().emails[0].address === "admin@email.nl") {
+            return true
+        } else {
+            return false
+        }
+    }
 });

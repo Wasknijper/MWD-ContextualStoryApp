@@ -28,3 +28,7 @@ Meteor.publish('lastWeather', function(){
 Meteor.publish('facebookDataCurrentUser', function(id){
   return FacebookData.find({userId: id});
 });
+
+Meteor.publish('fallbacks', function(){
+  return Fallback.find({});
+});
