@@ -24,7 +24,7 @@ Template.editStoryDetail.events({
         var textareaDescription = $("textarea[name=description")[0];
         var storyText = formatStoryText(textarea.value);
         var storyId = Template.currentData()._id;
-        console.log(textarea.value);
+
         var story = {
             title: title.value,
             description: textareaDescription.value,
