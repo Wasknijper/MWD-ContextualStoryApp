@@ -178,7 +178,7 @@ Template.storyText.helpers({
                 return location.curValue[6].long_name;
 
             case 'big5openess':
-                if(!facebook.applymagicsauce){return fallbacks.big5openess;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.big5openess;}
                 if(facebook.applymagicsauce.BIG5_Openness < 0.25){
                     return 'beetje open';
                 } else if (facebook.applymagicsauce.BIG5_Openness < 0.5){
@@ -191,7 +191,7 @@ Template.storyText.helpers({
                 return fallbacks.big5openess; ;
 
             case 'big5stability':
-                if(!facebook.applymagicsauce || !facebook){return fallbacks.big5stability;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.big5stability;}
                 if(facebook.applymagicsauce.BIG5_Neuroticism < 0.25){
                     return 'beetje stabiel';
                 } else if (facebook.applymagicsauce.BIG5_Neuroticism < 0.5){
@@ -204,7 +204,7 @@ Template.storyText.helpers({
                 return fallbacks.big5stability;
 
             case 'big5extroversion':
-                if(!facebook.applymagicsauce || !facebook){return fallbacks.big5extroversion;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.big5extroversion;}
                 if(facebook.applymagicsauce.BIG5_Extraversion < 0.25){
                     return 'erg introvert';
                 } else if (facebook.applymagicsauce.BIG5_Extraversion < 0.5){
@@ -217,7 +217,7 @@ Template.storyText.helpers({
                 return fallbacks.big5stability;
 
             case 'big5agreeableness':
-                if(!facebook.applymagicsauce || !facebook){return fallbacks.big5agreeableness;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.big5agreeableness;}
                 if(facebook.applymagicsauce.BIG5_Agreeableness < 0.25){
                     return 'erg bereid om anderen te helpen';
                 } else if (facebook.applymagicsauce.BIG5_Agreeableness < 0.5){
@@ -230,7 +230,7 @@ Template.storyText.helpers({
                 return fallbacks.big5stability;
 
             case 'big5conscientiousness':
-                if(!facebook.applymagicsauce || !facebook){return fallbacks.big5conscientiousness;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.big5conscientiousness;}
                 if(facebook.applymagicsauce.BIG5_Conscientiousness < 0.25){
                     return 'erg bewust van eigen handelen';
                 } else if (facebook.applymagicsauce.BIG5_Conscientiousness < 0.5){
@@ -243,7 +243,7 @@ Template.storyText.helpers({
                 return fallbacks.big5stability;
 
             case 'predictedage':
-                if(!facebook.applymagicsauce || !facebook){return fallbacks.predictedage;}
+                if(!facebook || !facebook.applymagicsauce){return fallbacks.predictedage;}
                 if(facebook.applymagicsauce.Age) {
                     return Math.round(facebook.applymagicsauce.Age);
                 }
