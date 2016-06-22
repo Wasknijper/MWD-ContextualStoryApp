@@ -64,10 +64,7 @@ Template.storyText.helpers({
 
     variable: function() {
 
-        if(!spansChecked){
-            spansChecked = true;
-            window.setTimeout(fixPunctuation, 200);
-        }
+        fixPunctuation();
 
         var date = Chronos.currentTime();
         var fallbacks = Template.parentData().fallbacks;
@@ -191,7 +188,7 @@ Template.storyText.helpers({
                 } else if (facebook.applymagicsauce.BIG5_Openness < 1){
                     return 'erg open';
                 }
-                return ;
+                return fallbacks.big5openess; ;
 
             case 'big5stability':
                 if(!facebook){return fallbacks.big5stability;}
@@ -204,7 +201,7 @@ Template.storyText.helpers({
                 } else if (facebook.applymagicsauce.BIG5_Neuroticism < 1){
                     return 'erg stabiel';
                 }
-                return ;
+                return fallbacks.big5stability;
 
             case 'big5extroversion':
                 if(!facebook){return fallbacks.big5extroversion;}
@@ -217,7 +214,7 @@ Template.storyText.helpers({
                 } else if (facebook.applymagicsauce.BIG5_Extraversion < 1){
                     return 'erg extravert';
                 }
-                return ;
+                return fallbacks.big5stability;
 
             case 'big5agreeableness':
                 if(!facebook){return fallbacks.big5agreeableness;}
@@ -230,7 +227,7 @@ Template.storyText.helpers({
                 } else if (facebook.applymagicsauce.BIG5_Agreeableness < 1){
                     return 'erg op eigen interesses gericht';
                 }
-                return ;
+                return fallbacks.big5stability;
 
             case 'big5conscientiousness':
                 if(!facebook){return fallbacks.big5conscientiousness;}
@@ -243,14 +240,14 @@ Template.storyText.helpers({
                 } else if (facebook.applymagicsauce.BIG5_Conscientiousness < 1){
                     return 'beetje bewust van eigen handelen';
                 }
-                return ;
+                return fallbacks.big5stability;
 
             case 'predictedage':
                 if(!facebook){return fallbacks.predictedage;}
                 if(facebook.applymagicsauce.Age) {
                     return Math.round(facebook.applymagicsauce.Age);
                 }
-                return ;
+                return fallbacks.predictedage;
 
             default:
                 return 'This variable is not valid!';
