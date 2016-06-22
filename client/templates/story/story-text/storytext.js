@@ -33,6 +33,14 @@ Template.storyText.onCreated(function() {
     }
 });
 
+Template.storyText.onRendered(function(){
+    Session.set('readingStory', true);
+});
+
+Template.storyText.onDestroyed(function(){
+    Session.set('readingStory', false);
+})
+
 Template.storyText.helpers({
     story: () => Template.currentData().story,
 
@@ -145,6 +153,78 @@ Template.storyText.helpers({
             case 'country':
                 if(!location){return fallback.country;}
                 return location.curValue[6].long_name;
+
+            case 'big5openess':
+                if(!facebook){return fallbacks.big5openess;}
+                if(facebook.applymagicsauce.BIG5_Openness < 0.25){
+                    return 'beetje open';
+                } else if (facebook.applymagicsauce.BIG5_Openness < 0.5){
+                    return 'redelijk open';
+                } else if (facebook.applymagicsauce.BIG5_Openness < 0.75){
+                    return 'tamelijk open';
+                } else if (facebook.applymagicsauce.BIG5_Openness < 1){
+                    return 'erg open';
+                }
+                return ;
+
+            case 'big5stability':
+                if(!facebook){return fallbacks.big5stability;}
+                if(facebook.applymagicsauce.BIG5_Neuroticism < 0.25){
+                    return 'beetje stabiel';
+                } else if (facebook.applymagicsauce.BIG5_Neuroticism < 0.5){
+                    return 'redelijk stabiel';
+                } else if (facebook.applymagicsauce.BIG5_Neuroticism < 0.75){
+                    return 'tamelijk stabiel';
+                } else if (facebook.applymagicsauce.BIG5_Neuroticism < 1){
+                    return 'erg stabiel';
+                }
+                return ;
+
+            case 'big5extroversion':
+                if(!facebook){return fallbacks.big5extroversion;}
+                if(facebook.applymagicsauce.BIG5_Extraversion < 0.25){
+                    return 'erg introvert';
+                } else if (facebook.applymagicsauce.BIG5_Extraversion < 0.5){
+                    return 'tamelijk introvert';
+                } else if (facebook.applymagicsauce.BIG5_Extraversion < 0.75){
+                    return 'tamelijk extravert';
+                } else if (facebook.applymagicsauce.BIG5_Extraversion < 1){
+                    return 'erg extravert';
+                }
+                return ;
+
+            case 'big5agreeableness':
+                if(!facebook){return fallbacks.big5agreeableness;}
+                if(facebook.applymagicsauce.BIG5_Agreeableness < 0.25){
+                    return 'erg bereid om anderen te helpen';
+                } else if (facebook.applymagicsauce.BIG5_Agreeableness < 0.5){
+                    return 'bereid om anderen te helpen';
+                } else if (facebook.applymagicsauce.BIG5_Agreeableness < 0.75){
+                    return 'op eigen interesses gericht';
+                } else if (facebook.applymagicsauce.BIG5_Agreeableness < 1){
+                    return 'erg op eigen interesses gericht';
+                }
+                return ;
+
+            case 'big5conscientiousness':
+                if(!facebook){return fallbacks.big5conscientiousness;}
+                if(facebook.applymagicsauce.BIG5_Conscientiousness < 0.25){
+                    return 'erg bewust van eigen handelen';
+                } else if (facebook.applymagicsauce.BIG5_Conscientiousness < 0.5){
+                    return 'tamelijk bewust van eigen handelen';
+                } else if (facebook.applymagicsauce.BIG5_Conscientiousness < 0.75){
+                    return 'redelijk bewust van eigen handelen';
+                } else if (facebook.applymagicsauce.BIG5_Conscientiousness < 1){
+                    return 'beetje bewust van eigen handelen';
+                }
+                return ;
+
+            case 'predictedage':
+                if(!facebook){return fallbacks.predictedage;}
+                if(facebook.applymagicsauce.Age) {
+                    return Math.round(facebook.applymagicsauce.Age);
+                }
+                return ;
 
             default:
                 return 'This variable is not valid!';

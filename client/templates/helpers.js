@@ -109,7 +109,6 @@ formatStoryText = function(textToFormat) {
     //splitting regex from http://stackoverflow.com/a/30576287 & http://stackoverflow.com/questions/1721602/regex-match-a-z-a-z-0-9-and
     //ps. I hate regex
     var regex = /\s*(\{[a-zA-Z0-9]+\})\s*/g;
-    storyText = storyText.replace(/\s/g, '&nbsp;');
     console.log(storyText);
     storyText = storyText.split(regex).filter(Boolean);
     var text  = [], obj;

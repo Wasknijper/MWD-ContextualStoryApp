@@ -15,8 +15,6 @@ Template.newStory.events({
         var textareaDescription = $("textarea[name=description")[0];
         var text = formatStoryText(textarea.value);
 
-        console.log(text);
-
         var story = {
             createdBy : Meteor.userId(),
             createdOn : new Date(),
@@ -30,30 +28,36 @@ Template.newStory.events({
                 Session.set('submitStory', 'Er is iets mis gegaan');
                 console.log(err)
             } else {
-                Session.set('submitStory', 'Je verhaal is opgeslagen');
+                Session.set('submitStory', 'Je verhaal is opgeslagen. <a href="/story/'+ res +'">Bekijk het verhaal</a>');
+                Session.set('submitStoryId', res);
                 title.value = '';
                 textareaDescription.value = '';
                 textarea.value = '';
             }
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
         })
     },
 
-    'click button' : function(e){
+    'click .toggle button' : function(e){
         var id = e.currentTarget.id;
+        if(id === 'edit-button'){ return };
         var textarea = $("textarea[name=story")[0];
         textarea.value = textarea.value + '{' + id + '}';
     },
 
-    'click .variableToggle a' : function(e){
+    'click .variable-toggle button' : function(e){
         e.preventDefault();
-        var target = e.currentTarget.hash.substr(1);
+        var target = e.currentTarget.name;
         $(".toggle").addClass(function() {
             return "hidden";
         });
         $("." + target).removeClass('hidden');
+        $('.variable-toggle button').removeClass('active');
+        $(e.currentTarget).addClass('active');
     }
 });
 
 Template.newStory.helpers({
-    submitMessage : () => Session.get('submitStory')
+    submitMessage : () => Session.get('submitStory'),
+    newStoryId: ()=> Session.get('submitStoryId')
 })

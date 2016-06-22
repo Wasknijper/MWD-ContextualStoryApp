@@ -1,6 +1,7 @@
 <template name="menu">
     {{#if isAdmin}}
-    <div class="menu">
+    <div class="menu {{#if readingStory}}reading{{/if}}">
+        <a href="#" id="back">&#60; terug</a>
         <div class="menu-bar">
             <button id="menu-button">Menu</button>
             <h2><a href="/">Contextual Story App</a></h2>
@@ -16,7 +17,7 @@
                     <li><a href="#" class="logout">Log uit</a></li>
                     <li><a href="/new">Nieuw verhaal</a></li>
                     <li><a href="/edit">Verhaal aanpassen</a></li>
-                    <li><a href="/userlist">Gebruikers lijst</a></li>
+                    <li><a href="/userlist">Gebruikerslijst</a></li>
                     <li><a href="/fallbacks">Variabelen terugvallen</a></li>
             </ul>
         </nav>
