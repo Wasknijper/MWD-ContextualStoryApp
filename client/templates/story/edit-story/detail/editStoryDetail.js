@@ -24,7 +24,7 @@ Template.editStoryDetail.events({
         var textareaDescription = $("textarea[name=description")[0];
         var storyText = formatStoryText(textarea.value);
         var storyId = Template.currentData()._id;
-
+        console.log(textarea.value);
         var story = {
             title: title.value,
             description: textareaDescription.value,
@@ -38,7 +38,8 @@ Template.editStoryDetail.events({
             } else {
                 Session.set('editStory', 'Je verhaal is opgeslagen');
             }
-        })
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        });
     },
 
     'click .toggle button' : function(e){
@@ -48,17 +49,18 @@ Template.editStoryDetail.events({
         textarea.value = textarea.value + '{' + id + '}';
     },
 
-    'click .variableToggle button' : function(e){
+    'click .variable-toggle button' : function(e){
         e.preventDefault();
         var target = e.currentTarget.name;
         $(".toggle").addClass(function() {
             return "hidden";
         });
         $("." + target).removeClass('hidden');
-        $('.variableToggle button').removeClass('active');
+        $('.variable=toggle button').removeClass('active');
         $(e.currentTarget).addClass('active');
     }
 });
+
 
 Template.editStoryDetail.helpers({
     editMessage : () => Session.get('editStory'),
@@ -76,7 +78,6 @@ Template.editStoryDetail.helpers({
                 formattedText = formattedText + textArray[i].text;
             }
         }
-        formattedText = formattedText.split("&nbsp;").join(" ");
         return formattedText;
     }
 })

@@ -1,7 +1,14 @@
 Template.menu.onRendered(function(){
+    if($(window).innerWidth() > 960) {
+        $('.menu nav').removeClass('hidden');
+    } else {
+        console.log('wat');
+    }
 });
 
 Template.menu.helpers({
+    readingStory: () => Session.get('readingStory'),
+
     isAdmin: () => Roles.userIsInRole(Meteor.userId(), 'admin', 'admins'),
 
     impersonating: function(){
@@ -14,6 +21,10 @@ Template.menu.helpers({
 })
 
 Template.menu.events({
+    'click #back': function(event) {
+        window.history.back();
+    },
+
     'click #menu-button': function(event) {
         $('.menu nav').toggleClass('hidden');
     },

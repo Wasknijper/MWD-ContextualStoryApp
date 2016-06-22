@@ -2,6 +2,7 @@
     <div class="fallbacks">
         <h1>Terugvallen</h1>
         <p> Stel de terugvallen in voor als een variabele niet kan worden gevonden. </p>
+        <p id="save-message">{{saveMesage}}</p>
         <table>
             <tr>
                 <th>Variabele</th>
@@ -70,6 +71,30 @@
             <tr>
                 <td>Land</td>
                 <td><input class="fallback-input" value="{{values.country}}" name="country"/></td>
+            </tr>
+            <tr>
+                <td>Openheid</td>
+                <td><input class="fallback-input" value="{{values.big5openess}}" name="big5openess"/></td>
+            </tr>
+            <tr>
+                <td>Stabiliteit</td>
+                <td><input class="fallback-input" value="{{values.big5stability}}" name="big5stability"/></td>
+            </tr>
+            <tr>
+                <td>Extrovert/Introvert</td>
+                <td><input class="fallback-input" value="{{values.big5extroversion}}" name="big5extroversion"/></td>
+            </tr>
+            <tr>
+                <td>Bereidheid anderen te helpen</td>
+                <td><input class="fallback-input" value="{{values.big5agreeableness}}" name="big5agreeableness"/></td>
+            </tr>
+            <tr>
+                <td>Bewustheid in handelen</td>
+                <td><input class="fallback-input" value="{{values.big5conscientiousness}}" name="big5conscientiousness"/></td>
+            </tr>
+            <tr>
+                <td>Geschatte leeftijd</td>
+                <td><input class="fallback-input" value="{{values.predictedage}}" name="predictedage"/></td>
             </tr>
         </table>
         <input type="submit" id="submit" value="Fallbacks opslaan"/>
