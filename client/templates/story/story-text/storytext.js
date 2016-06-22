@@ -1,6 +1,24 @@
 var location = undefined;
 var timeout = null;
+var spansChecked = false;
 
+var fixPunctuation = function() {
+    var span = $('.story-text p span');
+    for(var i = 0; i < span.length; i++) {
+        if(span[i].className){
+            var index = i;
+            var nextIndex = index + 1;
+            if(!span[nextIndex]){
+                return;
+            }
+            var text = span[nextIndex].innerHTML;
+            var firstChar = text.substring(0,1);
+            if(firstChar === '.' || firstChar === ','){
+                span[i].classList.add('formatting');
+            }
+        }
+    }
+};
 
 Template.storyText.onCreated(function() {
     Meteor.subscribe("lastWeather", {
@@ -45,6 +63,12 @@ Template.storyText.helpers({
     story: () => Template.currentData().story,
 
     variable: function() {
+
+        if(!spansChecked){
+            spansChecked = true;
+            window.setTimeout(fixPunctuation, 200);
+        }
+
         var date = Chronos.currentTime();
         var fallbacks = Template.parentData().fallbacks;
         var weather, facebook;
@@ -57,6 +81,8 @@ Template.storyText.helpers({
             weather = Weather.findOne({}, {sort: {createdOn: -1}});
             facebook = FacebookData.findOne({'userId': readerId});
         }
+
+        var spans = $('.story-text p span');
 
         switch(this.text){
             case 'name':

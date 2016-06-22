@@ -6,10 +6,10 @@
         <p>
             {{#each story.text}}
                 {{#if equals this.type 'text'}}
-                    {{breaklines this.text}}
+                    <span>{{breaklines this.text}}</span>
                 {{else}}
                     {{#if equals this.type 'variable'}}
-                        <span>{{variable}}</span>
+                        <span class="variable">{{variable}}</span>
                     {{/if}}
                 {{/if}}
             {{/each}}
