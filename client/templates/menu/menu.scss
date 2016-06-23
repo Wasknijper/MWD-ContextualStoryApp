@@ -14,6 +14,10 @@
     &.hidden {
         opacity: 0;
     }
+    
+    #back {
+        display: none;
+    }
 
     .menu-bar {
         padding: 1em;
@@ -47,7 +51,7 @@
     }
 
     h2 {
-        font-size: 1.3em;
+        font-size: 1.2em;
         margin-bottom: 0;
         display: inline;
         text-align: right;
@@ -142,10 +146,6 @@
 
         &.reading .menu-bar h2 {
             opacity: 0;
-        }
-
-        #back {
-            display: none;
         }
 
         &.reading {
