@@ -11,7 +11,12 @@ There might be a possiblity in the future to allow other user to make and publis
 
 ##Features
 For feature list see issues.
-
 [Current sprint](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+2%22)
-
 [Sprint 1](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+1%22)
+
+##API's
+In this project I used the following API's:
+- Facebook Login
+- Facebook Graph
+- OpenWeatherMap
+- ApplyMagicSauce
