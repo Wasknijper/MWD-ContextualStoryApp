@@ -1,6 +1,10 @@
 .menu {
-    color: #08293B;
-    background-color: #E9E9E9;
+
+    #back {
+        display: none;
+    }
+    color: #F7EFD2;
+    background-color: #332C2C;
     margin-right: 0;
     -ms-flex: 0 30em;
     -webkit-box-flex:  0;
@@ -31,7 +35,7 @@
         display: block;
         transition: max-height 0.5s;
         position: absolute;
-        background-color: #E9E9E9;
+        background-color: #332C2C;
         overflow: hidden;
         padding: 0 1em;
         margin-bottom: 1em;
@@ -59,9 +63,9 @@
 
     button {
         margin-right: 0.5em;
-        color: #08293B;
+        color: #F7EFD2;
         line-height: 1.5em;
-        border: 1px solid #08293B;
+        border: 1px solid #F7EFD2;
         background: none;
         display: inline;
         padding: 0 0.5em;
@@ -70,17 +74,17 @@
         vertical-align: text-bottom;
 
         &:hover, &:focus {
-            color: #E9E9E9;
-            background-color: #08293B;
+            color: #332C2C;
+            background-color: #F7EFD2;
         }
     }
 
     a {
-        color: #08293B;
+        color: #F7EFD2;
     }
 
     a:hover {
-        color: lighten(#08293B, 25%)
+        color: darken(#F7EFD2, 25%)
     }
 }
 
@@ -166,3 +170,13 @@
     }
 }
 
+.reading .menu {
+    top: 0;
+    overflow: hidden;
+    transition: 3s;
+}
+
+.log-in .menu {
+    opacity: 0;
+    width: 0;
+}

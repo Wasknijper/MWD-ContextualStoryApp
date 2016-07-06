@@ -1,5 +1,62 @@
 .story-text {
+    min-height: 100%;
+    .controls {
+        width: 1em;
+        display: inline-block;
+        position: fixed;
+        margin-left: -3.95em;
+        background-color: #F7EFD2;
+        padding: 0.5em;
+        border: #7D3232 0.5em solid;
+        border-right: 0;
+        transition: all 3s;
+        font-weight: bold;
+        text-align: center;
+
+        a {
+            font-size: 1.3em;
+            display:block;
+            text-decoration: none;
+            color: #332C2C;
+
+            &:hover, &:focus {
+                color: lighten(#332C2C, 10%);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media(max-width: 56em){
+        .controls {
+            margin-left: 0;
+            right: 0.25em;
+            border: 0;
+            padding: 0.5em;
+            background: none;
+            top: 8em;
+        }
+    }
+
     .formatting {
         margin-right: -0.2em;
+    }
+
+    h1 a {
+        font-size: 0.4em;
+        color: #332C2C;
+        text-decoration: none;
+
+        &:focus, &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; }
+        to { opacity:1; }
+    }
+
+    .variable {
+        animation: fadeIn 1s;
     }
 }

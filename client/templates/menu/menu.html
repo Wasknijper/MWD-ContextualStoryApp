@@ -1,31 +1,28 @@
 <template name="menu">
-    {{#if isAdmin}}
-    <div class="menu {{#if readingStory}}reading{{/if}}">
+    <div class="menu">
         <a href="#" id="back">&#60; terug</a>
         <div class="menu-bar">
             <button id="menu-button">Menu</button>
             <h2><a href="/">Contextual Story App</a></h2>
         </div>
-        <nav class="hidden">
-            <p>
-                Welcome, {{currentUser.profile.name}}<br>
-                {{#if impersonating}}
-                    Leest als: {{impersonating}} <a href="#" id='clear'>(clear)</a>
-                {{/if}}
-            </p>
-            <ul>
-                    <li><a href="#" class="logout">Log uit</a></li>
-                    <li><a href="/new">Nieuw verhaal</a></li>
-                    <li><a href="/edit">Verhaal aanpassen</a></li>
-                    <li><a href="/userlist">Gebruikerslijst</a></li>
-                    <li><a href="/fallbacks">Variabelen terugvallen</a></li>
-            </ul>
-        </nav>
-    </div>
-    {{else}}
         {{#if currentUser}}
-        <a href="#" class="logout non-admin">Log uit</a>
+            <nav class="hidden">
+                <p>
+                    Welkom, {{currentUser.profile.name}}<br>
+                    {{#if impersonating}}
+                        Leest als: {{impersonating}} <a href="#" id='clear'>(clear)</a>
+                    {{/if}}
+                </p>
+                <ul>
+                        <li><a href="#" class="logout">Log uit</a></li>
+                        {{#if isAdmin}}
+                            <li><a href="/">Verhalen</a></li>
+                            <li><a href="/userlist">Gebruikerslijst</a></li>
+                            <li><a href="/fallbacks">Variabelen terugvallen</a></li>
+                        {{/if}}
+                </ul>
+            </nav>
         {{/if}}
-    {{/if}}
+    </div>
 </template>
 

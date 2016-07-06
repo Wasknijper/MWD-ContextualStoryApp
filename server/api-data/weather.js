@@ -10,7 +10,7 @@ var resultWeather = () => HTTP.get(url, function(err, res){
         main: res.data.weather[0].main,
         description: [res.data.weather[0].description, descriptive]
     };
-
+    Weather.remove({});
     Weather.insert(weather);
 });
 

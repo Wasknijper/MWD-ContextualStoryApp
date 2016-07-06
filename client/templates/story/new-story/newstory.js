@@ -28,11 +28,12 @@ Template.newStory.events({
                 Session.set('submitStory', 'Er is iets mis gegaan');
                 console.log(err)
             } else {
-                Session.set('submitStory', 'Je verhaal is opgeslagen. <a href="/story/'+ res +'">Bekijk het verhaal</a>');
-                Session.set('submitStoryId', res);
-                title.value = '';
-                textareaDescription.value = '';
-                textarea.value = '';
+                // Session.set('submitStory', 'Je verhaal is opgeslagen. <a href="/story/'+ res +'">Bekijk het verhaal</a>');
+                // Session.set('submitStoryId', res);
+                // title.value = '';
+                // textareaDescription.value = '';
+                // textarea.value = '';
+                Router.go('/story/' + res);
             }
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         })

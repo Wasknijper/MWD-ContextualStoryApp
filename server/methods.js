@@ -10,5 +10,12 @@ Meteor.methods({
     },
     updateFallbacks: function(id, fallbacks){
         Fallback.update({_id: id}, {$set: fallbacks});
+    },
+    updateProfile: function(storyId, position){
+        var key = 'profile.' + storyId;
+        var savePosition = {};
+        savePosition[key] = position;
+        console.log(savePosition);
+        Meteor.users.update({_id: Meteor.userId()}, {$set: savePosition});
     }
 });

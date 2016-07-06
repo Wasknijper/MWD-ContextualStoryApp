@@ -1,14 +1,18 @@
 .story-tile {
     box-sizing: border-box;
     width: 45%;
-    display: inline-block;
-    border-left: #CBE0EC 0.2em solid;
+    display: block;
+    border-left: #7D3232 0.2em solid;
     margin-right: 1em;
     margin-bottom: 1.5em;
     padding: 0.5em 1em;
 
     p, h3 {
         margin: 0;
+    }
+
+    p {
+        word-break: break-all;
     }
 
     .description {
@@ -20,9 +24,11 @@
     a {
         color: #332C2C;
         text-decoration: none;
+        display: block;
     }
 
     &:hover {
-        background-color: #CBE0EC;
+        background-color: darken(#F7EFD2, 10%);
     }
+
 }
