@@ -1,16 +1,9 @@
 <template name="appLayout">
-    <head>
-        <title>simple</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+    {{> menu}}
 
-    <body>
-        {{> menu}}
-
-        <main>
-            {{> yield}}
-        </main>
-    </body>
+    <main>
+        {{> yield}}
+    </main>
 </template>
 <!--
 Zon uren api

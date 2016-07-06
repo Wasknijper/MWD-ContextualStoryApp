@@ -14,7 +14,7 @@ Template.editStoryDetail.events({
         var confirmAlert = confirm('Weet je zeker dat je dit verhaal wilt verwijderen?');
         if(confirmAlert){
             Meteor.call('deleteStory', Template.currentData()._id);
-            Router.go('/edit');
+            Router.go('/');
         }
     },
 

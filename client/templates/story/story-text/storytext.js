@@ -1,5 +1,4 @@
-var location = undefined;
-var timeout = null;
+var location  = undefined;
 var spansChecked = false;
 
 var fixPunctuation = function() {
@@ -20,7 +19,30 @@ var fixPunctuation = function() {
     }
 };
 
+var isScrolledIntoView = function(el) {
+    var top = el.offsetTop;
+    var left = el.offsetLeft;
+    var width = el.offsetWidth;
+    var height = el.offsetHeight;
+
+    while(el.offsetParent) {
+        el = el.offsetParent;
+        top += el.offsetTop;
+        left += el.offsetLeft;
+    }
+
+    return (
+        top < (window.pageYOffset + window.innerHeight) &&
+        left < (window.pageXOffset + window.innerWidth) &&
+        (top + height) > window.pageYOffset &&
+        (left + width) > window.pageXOffset
+    );
+}
+
+
 Template.storyText.onCreated(function() {
+    this.timeout = undefined;
+
     Meteor.subscribe("lastWeather", {
         onReady: () => Session.set('weatherLoaded', true)
     });
@@ -49,21 +71,85 @@ Template.storyText.onCreated(function() {
 
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
+
+    $('body').addClass('reading');
+    $('main').addClass('story-text-main');
+
+    $(document).on('mousemove', function() {
+        clearTimeout(this.timeout);
+        if($('body').hasClass('reading') === false) {return}
+        if(!Session.get('insideStoryText')){
+            $('body').removeClass('idle')
+        }
+        this.timeout = setTimeout(function() {
+            $('body').addClass('idle')
+        }, 10000);
+    });
 });
 
 Template.storyText.onRendered(function(){
     Session.set('readingStory', true);
+
+    var spans = $('.story-text span');
+    var spanVisible = 0;
+    var savePosition = {};
+    var n = window.location.pathname.lastIndexOf('/');
+    var id = window.location.pathname.substring(n + 1);
+
+    $(document).scroll(function() {
+        var cutoff = $(window).scrollTop();
+        $('.story-text span').each(function(i) {
+            if ($(this).offset().top > cutoff) {
+                var index = i;
+                if(spanVisible !== index){
+                    console.log('i');
+                }
+                spanVisible = i;
+                console.log(i);
+                Meteor.call('updateProfile', id, spanVisible);
+                return false;
+            }
+        });
+    });
+
+    //scroll to the last paragraph user
+    if(Meteor.user().profile[id]){
+        var num = Meteor.user().profile[id];
+        $('html, body').animate({
+            scrollTop: ($(spans[num]).offset().top)
+        },500);
+    };
+
 });
 
 Template.storyText.onDestroyed(function(){
     Session.set('readingStory', false);
-})
+    clearTimeout(this.timeout);
+    $('body').removeClass('reading');
+    $('body').removeClass('idle');
+    $('main').removeClass('story-text-main');
+});
+
+Template.storyText.events({
+    'click .plus': function(){
+        var fontSize = parseInt($("body").css("font-size"));
+        fontSize = fontSize + 1 + "px";
+        $("body").css({'font-size':fontSize});
+    },
+
+    'click .min': function(){
+        var fontSize = parseInt($("body").css("font-size"));
+        fontSize = fontSize - 1 + "px";
+        $("body").css({'font-size':fontSize});
+    }
+});
 
 Template.storyText.helpers({
     story: () => Template.currentData().story,
 
-    variable: function() {
+    isAdmin: () => Roles.userIsInRole(Meteor.userId(), 'admin', 'admins'),
 
+    variable: function() {
         fixPunctuation();
 
         var date = Chronos.currentTime();

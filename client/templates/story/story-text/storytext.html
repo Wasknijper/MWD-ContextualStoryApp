@@ -1,7 +1,14 @@
 <template name="storyText">
     <div class="story-text">
+        <div class="controls">
+            <a href="#" class="plus">+</a>
+            <a href="#" class="min">-</a>
+        </div>
         <h1>
             {{story.title}}
+            {{#if isAdmin}}
+                <a href="/edit/{{story._id}}">(aanpassen)</a>
+            {{/if}}
         </h1>
         <p>
             {{#each story.text}}
@@ -9,7 +16,7 @@
                     <span>{{breaklines this.text}}</span>
                 {{else}}
                     {{#if equals this.type 'variable'}}
-                        <span class="variable">{{variable}}</span>
+                        {{>textNode variable }}
                     {{/if}}
                 {{/if}}
             {{/each}}
