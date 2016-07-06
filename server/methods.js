@@ -15,7 +15,6 @@ Meteor.methods({
         var key = 'profile.' + storyId;
         var savePosition = {};
         savePosition[key] = position;
-        console.log(savePosition);
         Meteor.users.update({_id: Meteor.userId()}, {$set: savePosition});
     }
 });
