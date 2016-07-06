@@ -4,8 +4,6 @@ Template.userList.onRendered(function () {
 
 Template.userList.events({
     'click button' : function(e) {
-        console.log(e.currentTarget.name);
-        console.log(e.currentTarget.id);
         Session.set('readingAs', {name: e.currentTarget.name, id: e.currentTarget.id});
     }
 })

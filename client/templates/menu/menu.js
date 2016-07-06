@@ -1,8 +1,6 @@
 Template.menu.onRendered(function(){
     if($(window).innerWidth() > 960) {
         $('.menu nav').removeClass('hidden');
-    } else {
-        console.log('wat');
     }
 });
 

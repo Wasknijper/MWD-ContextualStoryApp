@@ -1,5 +1,6 @@
 var location  = undefined;
 var spansChecked = false;
+var timeout = undefined;
 
 var fixPunctuation = function() {
     var span = $('.story-text p span');
@@ -41,7 +42,7 @@ var isScrolledIntoView = function(el) {
 
 
 Template.storyText.onCreated(function() {
-    this.timeout = undefined;
+    timeout = undefined;
 
     Meteor.subscribe("lastWeather", {
         onReady: () => Session.set('weatherLoaded', true)
@@ -76,12 +77,12 @@ Template.storyText.onCreated(function() {
     $('main').addClass('story-text-main');
 
     $(document).on('mousemove', function() {
-        clearTimeout(this.timeout);
+        clearTimeout(timeout);
         if($('body').hasClass('reading') === false) {return}
         if(!Session.get('insideStoryText')){
             $('body').removeClass('idle')
         }
-        this.timeout = setTimeout(function() {
+        timeout = setTimeout(function() {
             $('body').addClass('idle')
         }, 10000);
     });
@@ -101,15 +102,17 @@ Template.storyText.onRendered(function(){
         $('.story-text span').each(function(i) {
             if ($(this).offset().top > cutoff) {
                 var index = i;
-                if(spanVisible !== index){
-                    console.log('i');
-                }
-                spanVisible = i;
-                console.log(i);
-                Meteor.call('updateProfile', id, spanVisible);
+                Meteor.call('updateProfile', id, index);
                 return false;
             }
         });
+    });
+
+    $(window).keydown(function(e) {
+        //86 = v key
+        if(e.shiftKey && e.keyCode === 86) {
+            $('.variable').toggleClass('bold');
+        }
     });
 
     //scroll to the last paragraph user
@@ -124,10 +127,12 @@ Template.storyText.onRendered(function(){
 
 Template.storyText.onDestroyed(function(){
     Session.set('readingStory', false);
-    clearTimeout(this.timeout);
+    clearTimeout(timeout);
     $('body').removeClass('reading');
     $('body').removeClass('idle');
     $('main').removeClass('story-text-main');
+    $(window).off();
+    $(document).off();
 });
 
 Template.storyText.events({
