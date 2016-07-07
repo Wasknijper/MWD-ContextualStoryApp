@@ -11,7 +11,9 @@ There might be a possiblity in the future to allow other user to make and publis
 
 ##URL
 https://mwd-contextualstoryapp.herokuapp.com/, login with admin@email.nl and password admin.
+
 *Want to see the variables when reading a story? Press `shift + v` to highlight them.*
+
 You cannot add new users for testing without being added to the facebook developer app.
 
 ##Installation 
