@@ -1,5 +1,8 @@
 .menu {
 
+    transform: rotate(0deg);
+    z-index: 6;
+
     #back {
         display: none;
     }
@@ -94,11 +97,32 @@
 }
 
 @media (min-width: 56em) {
+    .reading .menu {
+        padding-right: 1em;
+    }
+
     .menu{
+        color: #332C2C;
         position: relative;
         width: 11em;
         margin-top: 1.5em;
-        background-color: transparent;
+        background: #fefe9c; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #fefe9c 0%, #fff553 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #fefe9c 0%,#fff553 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #fefe9c 0%,#fff553 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefe9c', endColorstr='#fff553',GradientType=1 );
+        max-height: 14em;
+        padding: 1em;
+
+        -moz-transform: rotate(-4deg);
+        -webkit-transform: rotate(-4deg);
+        -o-transform: rotate(-4deg);
+        -ms-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+
+        box-shadow: 0px 4px 6px #333;
+        -moz-box-shadow: 0px 4px 6px #333;
+        -webkit-box-shadow: 0px 4px 6px #333;
 
         button {
             display: none;
@@ -161,12 +185,16 @@
             float: right;
             margin-right: 1em;
         }
+
+        a {
+            color: #332C2C;
+        }
     }
 }
 
 @media (min-width: 64.5em) {
     .menu,.menu .user-account, .menu .nav,.menu .menu-bar {
-        width: 15em;
+        width: 14em;
     }
 }
 

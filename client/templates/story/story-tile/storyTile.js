@@ -4,16 +4,6 @@ Template.storyTile.onRendered(function () {
 });
 
 Template.storyTile.helpers({
-    username : function(){
-        var createdBy = Template.currentData().createdBy;
-        var writer = Meteor.users.findOne({'_id' : createdBy});
-        if(writer){
-           return writer.profile.name;
-        } else {
-            return '';
-        }
-    },
-
     createdOnFormatted: function(){
         var createdOn = Template.currentData().createdOn;
         return createdOn.getDate() + ' - ' + (createdOn.getMonth()+1) + ' - ' + createdOn.getFullYear();

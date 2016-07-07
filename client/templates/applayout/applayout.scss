@@ -1,6 +1,11 @@
+body {
+    position: relative;
+    z-index: 0;
+}
+
 body > main {
-    background: #F7EFD2;
     color: #332C2C;
+    position: relative;
     padding: 1.5em;
     margin-top: 3.5em;
     margin-bottom: 5em;
@@ -11,6 +16,38 @@ body > main {
         margin-bottom: 0;
     }
 }
+
+
+body > main, body > main:after, body > main:before {
+    background-color: #F7EFD2;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.2), 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+//http://cssdeck.com/labs/shuffled-paper shuffeled paper effect
+body > main:before, body > main:after {
+    border-left: #7D3232 0.5em solid;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotateZ(2.5deg);
+    -o-transform: rotate(2.5deg);
+    transform: rotateZ(2.5deg);
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+body > main:after
+{
+    -webkit-transform: rotateZ(-1.5deg);
+    -o-transform: rotate(-1.5deg);
+    transform: rotateZ(-1.5deg);
+}
+
 
 @media (min-width: 56em){
     body > main {
@@ -59,10 +96,26 @@ body > main {
     > main {
         border-color: transparent;
     }
+
+    > main:before, > main:after {
+        opacity: 0;
+    }
 }
 
 .reading {
     .menu button {
         display: none;
+    }
+
+    > main:before {
+        -webkit-transform: rotateZ(0.5deg);
+        -o-transform: rotate(0.5deg);
+        transform: rotateZ(0.5deg);
+    }
+
+    body > main:after {
+        -webkit-transform: rotateZ(-0.5deg);
+        -o-transform: rotate(-0.5deg);
+        transform: rotateZ(-0.5deg);
     }
 }
