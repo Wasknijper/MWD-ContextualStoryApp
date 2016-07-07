@@ -13,6 +13,43 @@ There might be a possiblity in the future to allow other user to make and publis
 https://mwd-contextualstoryapp.herokuapp.com/, login with admin@email.nl and password admin. 
 You cannot add new users for testing without being added to the facebook developer app.
 
+##Installation 
+
+1. Download and unpack or clone this repo
+2. Open your command prompt and navigate to the folder you just cloned/downloaded 
+3. Enter the command `meteor` to start the app
+
+###Changing the api-keys
+
+####Facebook
+To make the facebook api work, you need to create a Facebook app to obtain your keys. (More information)
+After that you can change line 7 and 8 of [server/services.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/services.js#L7-L8)
+
+`
+ServiceConfiguration.configurations.insert({
+    service: 'facebook',
+    appId: '658167194335866',
+    secret: '0da9c75c915ffb5dc458aa15f329bb86'
+});
+`
+
+####OpenWeatherMap 
+After signing up you can change [line 2 of /server/api-data/weather.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/api-data/weather.js#L2) with your id.
+
+`var id = 'af9f0f076c0d6e0117f0123102f62148';`
+
+####ApplyMagicSauce 
+After signing up you need to change [line 37 and 38 of /server/api-data/facebook.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/api-data/facebook.js#L37-38)
+
+`
+    HTTP.post('http://api-v2.applymagicsauce.com/auth', {
+        data: {
+            "customer_id": 2439,
+            "api_key": "4qoso5tjvkutnq1kr93pcil24"
+        }
+    }
+`
+
 ##Features
 For feature list see issues.
 [Current sprint](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+2%22)
