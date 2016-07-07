@@ -22,7 +22,7 @@ You cannot add new users for testing without being added to the facebook develop
 ###Changing the api-keys
 
 ####Facebook
-To make the facebook api work, you need to create a Facebook app to obtain your keys. (More information)
+To make the facebook api work, you need to create a Facebook app to obtain your keys. [(Make a new  facebook web-app)](https://developers.facebook.com/quickstarts/?platform=web)
 After that you can change line 7 and 8 of [server/services.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/services.js#L7-L8)
 
 ```
@@ -74,9 +74,9 @@ After signing up you need to change [line 37 and 38 of /server/api-data/facebook
 ```
 
 ##Features
-For feature list see issues.
-[Current sprint](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+2%22)
-[Sprint 1](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+1%22)
+For feature list see [issues](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues).
+- [Current sprint](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+2%22)
+- [Sprint 1](https://github.com/Wasknijper/MWD-ContextualStoryApp/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Sprint+1%22)
 
 ##API's
 In this project I used the following API's:
