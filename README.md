@@ -25,13 +25,13 @@ You cannot add new users for testing without being added to the facebook develop
 To make the facebook api work, you need to create a Facebook app to obtain your keys. (More information)
 After that you can change line 7 and 8 of [server/services.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/services.js#L7-L8)
 
-`
+```
 ServiceConfiguration.configurations.insert({
     service: 'facebook',
     appId: '658167194335866',
     secret: '0da9c75c915ffb5dc458aa15f329bb86'
 });
-`
+```
 
 ####OpenWeatherMap 
 After signing up you can change [line 2 of /server/api-data/weather.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/api-data/weather.js#L2) with your id.
@@ -41,14 +41,14 @@ After signing up you can change [line 2 of /server/api-data/weather.js](https://
 ####ApplyMagicSauce 
 After signing up you need to change [line 37 and 38 of /server/api-data/facebook.js](https://github.com/Wasknijper/MWD-ContextualStoryApp/blob/master/server/api-data/facebook.js#L37-38)
 
-`
+```
     HTTP.post('http://api-v2.applymagicsauce.com/auth', {
         data: {
             "customer_id": 2439,
             "api_key": "4qoso5tjvkutnq1kr93pcil24"
         }
     }
-`
+```
 
 ##Features
 For feature list see issues.
